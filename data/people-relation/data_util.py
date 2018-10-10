@@ -111,7 +111,7 @@ print positionE2.shape
 
 
 import pickle
-with open('./people_relation_train.pkl', 'wb') as outp:
+with open('../people_relation_train.pkl', 'wb') as outp:
 	pickle.dump(word2id, outp)
 	pickle.dump(id2word, outp)
 	pickle.dump(relation2id, outp)
@@ -166,7 +166,7 @@ positionE2 = np.asarray(list(df_data['positionE2'].values))
 
 
 import pickle
-with open('./people_relation_test.pkl', 'wb') as outp:
+with open('../people_relation_test.pkl', 'wb') as outp:
 	pickle.dump(datas, outp)
 	pickle.dump(labels, outp)
 	pickle.dump(positionE1, outp)

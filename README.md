@@ -1,6 +1,7 @@
 # ChineseNRE
-python 2.7
-pytorch 0.4.0
+本项目使用
++ python 2.7
++ pytorch 0.4.0
 
 中文实体关系抽取，对实体关系抽取不了解的可以先看<a href="https://blog.csdn.net/buppt/article/details/82961979">这篇文章</a>。顺便求star～
 
@@ -21,13 +22,22 @@ unknown 0
 上下级 11
 ```
 
+虽然叫中文实体关系抽取，还是增加了一个英文数据集SemEval2010_task8，这是免费的公开数据集，其他的好像都要dollar了。。
+
 ## 训练
 模型使用的是lstm+attention模型。特征使用词向量+位置向量。
 
-训练前先运行data文件夹中的 `data_util.py` 文件，将中文数据处理成pkl文件供模型使用。
+训练前先运行data文件夹中的 `data_util.py` 文件，将数据处理成pkl文件供模型使用。
 
-然后运行`train.py`文件即可，可以在`train.py`文件中设置epoch、batch等参数，运行结束模型会储存到model文件夹中。
+然后运行`train.py`文件即可，可以在`train.py`文件中设置epoch、batch等参数，运行结束模型会储存到model文件夹中，可以在训练好的模型基础上继续训练。
+
+
+参数没有仔细调。。
+
 
 ## 更新日志
 2018-10-7 第一版，不定期进行修改与优化。
+
 2018-10-9 添加准确率、召回率、f值的计算，将model从`train.py`中分离。
+
+2018-10-10 添加SemEval2010_task8数据，以及一些小修改。

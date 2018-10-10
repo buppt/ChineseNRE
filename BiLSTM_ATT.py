@@ -27,8 +27,8 @@ class BiLSTM_ATT(nn.Module):
         self.lstm = nn.LSTM(input_size=self.embedding_dim+self.pos_dim*2,hidden_size=self.hidden_dim//2,num_layers=1, bidirectional=True)
         self.hidden2tag = nn.Linear(self.hidden_dim,self.tag_size)
         
-        self.dropout_emb=nn.Dropout(p=0.3)
-        self.dropout_gru=nn.Dropout(p=0.3)
+        self.dropout_emb=nn.Dropout(p=0.5)
+        self.dropout_gru=nn.Dropout(p=0.5)
         self.dropout_att=nn.Dropout(p=0.5)
         
         self.hidden = self.init_hidden()
@@ -55,7 +55,7 @@ class BiLSTM_ATT(nn.Module):
 
         #self.hidden = self.init_hidden()
         self.hidden = self.init_hidden_lstm()
-        #print sentence.size(),self.word_embeds(sentence).size()
+
         embeds = torch.cat((self.word_embeds(sentence),self.pos1_embeds(pos1),self.pos2_embeds(pos2)),2)
         
         embeds = torch.transpose(embeds,0,1)
@@ -77,6 +77,6 @@ class BiLSTM_ATT(nn.Module):
         res = torch.add(torch.bmm(relation,att_out),self.relation_bias)
         
         res = F.softmax(res,1)
-        #res= torch.transpose(res,1,2)
+
         
         return res.view(self.batch,-1)

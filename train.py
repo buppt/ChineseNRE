@@ -1,6 +1,8 @@
 #coding:utf8
 import numpy as np
 import pickle
+
+#with open('./data/engdata_train.pkl', 'rb') as inp:
 with open('./data/people_relation_train.pkl', 'rb') as inp:
     word2id = pickle.load(inp)
     id2word = pickle.load(inp)
@@ -9,13 +11,16 @@ with open('./data/people_relation_train.pkl', 'rb') as inp:
     labels = pickle.load(inp)
     position1 = pickle.load(inp)
     position2 = pickle.load(inp)
-    
 
+#with open('./data/engdata_test.pkl', 'rb') as inp: 
 with open('./data/people_relation_test.pkl', 'rb') as inp:
     test = pickle.load(inp)
     labels_t = pickle.load(inp)
     position1_t = pickle.load(inp)
     position2_t = pickle.load(inp)
+
+    
+
    
 print "train len", len(train)     
 print "test len", len(test)   
@@ -35,16 +40,16 @@ EMBEDDING_DIM = 100
 HIDDEN_DIM = 200
 TAG_SIZE = len(relation2id)
 BATCH = 128
-EPOCHS = 50
+EPOCHS = 100
 
-POS_SIZE = 82
+POS_SIZE = 82  #不同数据集这里可能会报错。
 POS_DIM = 25
 
-
+learning_rate = 0.0005
 
 model = BiLSTM_ATT(len(word2id)+1,TAG_SIZE,EMBEDDING_DIM,HIDDEN_DIM,POS_SIZE,POS_DIM,BATCH)
-#model = torch.load('model/model_c1.pkl')
-optimizer = optim.Adam(model.parameters(), lr=0.0005, weight_decay=1e-5)
+#model = torch.load('model/model_epoch20.pkl')
+optimizer = optim.Adam(model.parameters(), lr=learning_rate, weight_decay=1e-5)
 criterion = nn.CrossEntropyLoss(size_average=True)
 
 
@@ -69,8 +74,8 @@ for epoch in range(EPOCHS):
     print "epoch:",epoch
     acc=0
     total=0
+    
     for sentence,pos1,pos2,tag in train_dataloader:
-        
         sentence = Variable(sentence)
         pos1 = Variable(pos1)
         pos2 = Variable(pos2)
@@ -111,18 +116,21 @@ for epoch in range(EPOCHS):
     precision = [0,0,0,0,0,0,0,0,0,0,0,0]
     recall = [0,0,0,0,0,0,0,0,0,0,0,0]
     for i in range(len(count_predict)):
-        precision[i] = float(count_right[i])/count_predict[i]
-        recall[i] = float(count_right[i])/count_total[i]
+        if count_predict[i]!=0 :
+            precision[i] = float(count_right[i])/count_predict[i]
+            
+        if count_total[i]!=0:
+            recall[i] = float(count_right[i])/count_total[i]
     
 
-    precision = sum(precision)/len(precision)
-    recall = sum(recall)/len(recall)    
+    precision = sum(precision)/len(relation2id)
+    recall = sum(recall)/len(relation2id)    
     print "准确率：",precision
     print "召回率：",recall
     print "f：", (2*precision*recall)/(precision+recall)
 
-    if epoch%10==0:
-        model_name = "data/model_epoch"+str(epoch)+".pkl"
+    if epoch%20==0:
+        model_name = "./model/model_epoch"+str(epoch)+".pkl"
         torch.save(model, model_name)
         print model_name,"has been saved"
 
