@@ -1,4 +1,7 @@
 # ChineseNRE
+
+论文 Attention-Based Bidirectional Long Short-Term Memory Networks for Relation Classification 的复现。直接google论文题目即可查看论文。
+
 本项目使用
 + python 2.7
 + pytorch 0.4.0
