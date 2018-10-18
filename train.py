@@ -35,19 +35,31 @@ from torch.autograd import Variable
 from BiLSTM_ATT import BiLSTM_ATT
         
 
-        
+EMBEDDING_SIZE = len(word2id)+1        
 EMBEDDING_DIM = 100
-HIDDEN_DIM = 200
-TAG_SIZE = len(relation2id)
-BATCH = 128
-EPOCHS = 100
 
 POS_SIZE = 82  #不同数据集这里可能会报错。
 POS_DIM = 25
 
+HIDDEN_DIM = 200
+
+TAG_SIZE = len(relation2id)
+
+BATCH = 128
+EPOCHS = 100
+
+config={}
+config['EMBEDDING_SIZE'] = EMBEDDING_SIZE
+config['EMBEDDING_DIM'] = EMBEDDING_DIM
+config['POS_SIZE'] = POS_SIZE
+config['POS_DIM'] = POS_DIM
+config['HIDDEN_DIM'] = HIDDEN_DIM
+config['TAG_SIZE'] = TAG_SIZE
+config['BATCH'] = BATCH
+
 learning_rate = 0.0005
 
-model = BiLSTM_ATT(len(word2id)+1,TAG_SIZE,EMBEDDING_DIM,HIDDEN_DIM,POS_SIZE,POS_DIM,BATCH)
+model = BiLSTM_ATT(config)
 #model = torch.load('model/model_epoch20.pkl')
 optimizer = optim.Adam(model.parameters(), lr=learning_rate, weight_decay=1e-5)
 criterion = nn.CrossEntropyLoss(size_average=True)
