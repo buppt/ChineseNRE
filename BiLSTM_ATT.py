@@ -5,7 +5,7 @@ import torch.nn.functional as F
 torch.manual_seed(1)
 
 class BiLSTM_ATT(nn.Module):
-    def __init__(self,config):
+    def __init__(self,config,embedding_pre):
         super(BiLSTM_ATT,self).__init__()
         self.batch = config['BATCH']
         
@@ -13,14 +13,17 @@ class BiLSTM_ATT(nn.Module):
         self.embedding_dim = config['EMBEDDING_DIM']
         
         self.hidden_dim = config['HIDDEN_DIM']
-        
         self.tag_size = config['TAG_SIZE']
         
         self.pos_size = config['POS_SIZE']
         self.pos_dim = config['POS_DIM']
         
-        self.word_embeds = nn.Embedding(self.embedding_size,self.embedding_dim)
-        #self.word_embeds.weight = nn.Parameter(torch.FloatTensor(weight))
+        self.pretrained = config['pretrained']
+        if self.pretrained:
+            #self.word_embeds.weight.data.copy_(torch.from_numpy(embedding_pre))
+            self.word_embeds = nn.Embedding.from_pretrained(torch.FloatTensor(embedding_pre),freeze=False)
+        else:
+            self.word_embeds = nn.Embedding(self.embedding_size,self.embedding_dim)
         
         self.pos1_embeds = nn.Embedding(self.pos_size,self.pos_dim)
         self.pos2_embeds = nn.Embedding(self.pos_size,self.pos_dim)

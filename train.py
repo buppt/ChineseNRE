@@ -1,6 +1,8 @@
 #coding:utf8
 import numpy as np
 import pickle
+import sys
+import codecs
 
 #with open('./data/engdata_train.pkl', 'rb') as inp:
 with open('./data/people_relation_train.pkl', 'rb') as inp:
@@ -56,10 +58,33 @@ config['POS_DIM'] = POS_DIM
 config['HIDDEN_DIM'] = HIDDEN_DIM
 config['TAG_SIZE'] = TAG_SIZE
 config['BATCH'] = BATCH
+config["pretrained"]=False
 
 learning_rate = 0.0005
 
-model = BiLSTM_ATT(config)
+
+embedding_pre = []
+if len(sys.argv)==2 and sys.argv[1]=="pretrained":
+    print "use pretrained embedding"
+    config["pretrained"]=True
+    word2vec = {}
+    with codecs.open('vec.txt','r','utf-8') as input_data:   
+        for line in input_data.readlines():
+            word2vec[line.split()[0]] = map(eval,line.split()[1:])
+
+    unknow_pre = []
+    unknow_pre.extend([1]*100)
+    embedding_pre.append(unknow_pre) #wordvec id 0
+    for word in word2id:
+        if word2vec.has_key(word):
+            embedding_pre.append(word2vec[word])
+        else:
+            embedding_pre.append(unknow_pre)
+
+    embedding_pre = np.asarray(embedding_pre)
+    print embedding_pre.shape
+
+model = BiLSTM_ATT(config,embedding_pre)
 #model = torch.load('model/model_epoch20.pkl')
 optimizer = optim.Adam(model.parameters(), lr=learning_rate, weight_decay=1e-5)
 criterion = nn.CrossEntropyLoss(size_average=True)
