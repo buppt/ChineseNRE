@@ -33,8 +33,8 @@ with codecs.open('train.txt','r','utf-8') as tfc:
 
             for i,word in enumerate(line[3]):
                 sentence.append(word)
-                position1.append(i-3-index1)
-                position2.append(i-3-index2)
+                position1.append(i-index1)
+                position2.append(i-index2)
                 i+=1
             datas.append(sentence)
             labels.append(relation2id[line[2]])
