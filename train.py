@@ -76,7 +76,7 @@ config["pretrained"] = False
 learning_rate = 0.0005
 
 embedding_pre = []
-if len(sys.argv) == 2 and sys.argv[1] == "pretrained":
+if len(sys.argv) == 3 and sys.argv[2] == "pretrained":
     print("use pretrained embedding")
     config["pretrained"] = True
     word2vec = {}
