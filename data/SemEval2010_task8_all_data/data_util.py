@@ -163,7 +163,6 @@ with codecs.open('TEST_FILE_FULL.TXT', 'r', 'utf-8') as tra:
             else:
                 line = line.split('(')
                 labels.append(relation2id[line[0]])
-
         else:
             continue
 
@@ -174,7 +173,6 @@ for index in range(len(datas)):
     x.append(X_padding(datas[index]))
     pos_e1.append(pos_padding(entity1[index]))
     pos_e2.append(pos_padding(entity2[index]))
-
 x = np.asarray(x)
 y = np.asarray(labels)
 pos_e1 = np.asarray(pos_e1)
