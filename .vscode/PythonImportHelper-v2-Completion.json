@@ -1,0 +1,1130 @@
+[
+    {
+        "label": "codecs",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "codecs",
+        "description": "codecs",
+        "detail": "codecs",
+        "documentation": {}
+    },
+    {
+        "label": "sys",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "sys",
+        "description": "sys",
+        "detail": "sys",
+        "documentation": {}
+    },
+    {
+        "label": "pandas",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "pandas",
+        "description": "pandas",
+        "detail": "pandas",
+        "documentation": {}
+    },
+    {
+        "label": "numpy",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "numpy",
+        "description": "numpy",
+        "detail": "numpy",
+        "documentation": {}
+    },
+    {
+        "label": "deque",
+        "importPath": "collections",
+        "description": "collections",
+        "isExtraImport": true,
+        "detail": "collections",
+        "documentation": {}
+    },
+    {
+        "label": "deque",
+        "importPath": "collections",
+        "description": "collections",
+        "isExtraImport": true,
+        "detail": "collections",
+        "documentation": {}
+    },
+    {
+        "label": "pdb",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "pdb",
+        "description": "pdb",
+        "detail": "pdb",
+        "documentation": {}
+    },
+    {
+        "label": "flatten",
+        "importPath": "compiler.ast",
+        "description": "compiler.ast",
+        "isExtraImport": true,
+        "detail": "compiler.ast",
+        "documentation": {}
+    },
+    {
+        "label": "flatten",
+        "importPath": "compiler.ast",
+        "description": "compiler.ast",
+        "isExtraImport": true,
+        "detail": "compiler.ast",
+        "documentation": {}
+    },
+    {
+        "label": "pickle",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "pickle",
+        "description": "pickle",
+        "detail": "pickle",
+        "documentation": {}
+    },
+    {
+        "label": "re",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "re",
+        "description": "re",
+        "detail": "re",
+        "documentation": {}
+    },
+    {
+        "label": "torch",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "torch",
+        "description": "torch",
+        "detail": "torch",
+        "documentation": {}
+    },
+    {
+        "label": "torch.nn",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "torch.nn",
+        "description": "torch.nn",
+        "detail": "torch.nn",
+        "documentation": {}
+    },
+    {
+        "label": "torch.nn.functional",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "torch.nn.functional",
+        "description": "torch.nn.functional",
+        "detail": "torch.nn.functional",
+        "documentation": {}
+    },
+    {
+        "label": "torch.optim",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "torch.optim",
+        "description": "torch.optim",
+        "detail": "torch.optim",
+        "documentation": {}
+    },
+    {
+        "label": "torch.utils.data",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "torch.utils.data",
+        "description": "torch.utils.data",
+        "detail": "torch.utils.data",
+        "documentation": {}
+    },
+    {
+        "label": "Variable",
+        "importPath": "torch.autograd",
+        "description": "torch.autograd",
+        "isExtraImport": true,
+        "detail": "torch.autograd",
+        "documentation": {}
+    },
+    {
+        "label": "BiLSTM_ATT",
+        "importPath": "BiLSTM_ATT",
+        "description": "BiLSTM_ATT",
+        "isExtraImport": true,
+        "detail": "BiLSTM_ATT",
+        "documentation": {}
+    },
+    {
+        "label": "X_padding",
+        "kind": 2,
+        "importPath": "data.people-relation.data_util",
+        "description": "data.people-relation.data_util",
+        "peekOfCode": "def X_padding(words):\n    \"\"\"把 words 转为 id 形式，并自动补全位 max_len 长度。\"\"\"\n    ids = []\n    for i in words:\n        if i in word2id:\n            ids.append(word2id[i])\n        else:\n            ids.append(word2id[\"UNKNOW\"])\n    if len(ids) >= max_len: \n        return ids[:max_len]",
+        "detail": "data.people-relation.data_util",
+        "documentation": {}
+    },
+    {
+        "label": "pos",
+        "kind": 2,
+        "importPath": "data.people-relation.data_util",
+        "description": "data.people-relation.data_util",
+        "peekOfCode": "def pos(num):\n    if num<-40:\n        return 0\n    if num>=-40 and num<=40:\n        return num+40\n    if num>40:\n        return 80\ndef position_padding(words):\n    words = [pos(i) for i in words]\n    if len(words) >= max_len:  ",
+        "detail": "data.people-relation.data_util",
+        "documentation": {}
+    },
+    {
+        "label": "position_padding",
+        "kind": 2,
+        "importPath": "data.people-relation.data_util",
+        "description": "data.people-relation.data_util",
+        "peekOfCode": "def position_padding(words):\n    words = [pos(i) for i in words]\n    if len(words) >= max_len:  \n        return words[:max_len]\n    words.extend([81]*(max_len-len(words))) \n    return words\ndf_data = pd.DataFrame({'words': datas, 'tags': labels,'positionE1':positionE1,'positionE2':positionE2}, index=range(len(datas)))\ndf_data['words'] = df_data['words'].apply(X_padding)\ndf_data['tags'] = df_data['tags']\ndf_data['positionE1'] = df_data['positionE1'].apply(position_padding)",
+        "detail": "data.people-relation.data_util",
+        "documentation": {}
+    },
+    {
+        "label": "relation2id",
+        "kind": 5,
+        "importPath": "data.people-relation.data_util",
+        "description": "data.people-relation.data_util",
+        "peekOfCode": "relation2id = {}\nwith codecs.open('relation2id.txt','r','utf-8') as input_data:\n    for line in input_data.readlines():\n        relation2id[line.split()[0]] = int(line.split()[1])\n    input_data.close()\n    #print relation2id\ndatas = deque()\nlabels = deque()\npositionE1 = deque()\npositionE2 = deque()",
+        "detail": "data.people-relation.data_util",
+        "documentation": {}
+    },
+    {
+        "label": "datas",
+        "kind": 5,
+        "importPath": "data.people-relation.data_util",
+        "description": "data.people-relation.data_util",
+        "peekOfCode": "datas = deque()\nlabels = deque()\npositionE1 = deque()\npositionE2 = deque()\ncount = [0,0,0,0,0,0,0,0,0,0,0,0]\ntotal_data=0\nwith codecs.open('train.txt','r','utf-8') as tfc: \n    for lines in tfc:\n        line = lines.split()\n        if count[relation2id[line[2]]] <1500:",
+        "detail": "data.people-relation.data_util",
+        "documentation": {}
+    },
+    {
+        "label": "labels",
+        "kind": 5,
+        "importPath": "data.people-relation.data_util",
+        "description": "data.people-relation.data_util",
+        "peekOfCode": "labels = deque()\npositionE1 = deque()\npositionE2 = deque()\ncount = [0,0,0,0,0,0,0,0,0,0,0,0]\ntotal_data=0\nwith codecs.open('train.txt','r','utf-8') as tfc: \n    for lines in tfc:\n        line = lines.split()\n        if count[relation2id[line[2]]] <1500:\n            sentence = []",
+        "detail": "data.people-relation.data_util",
+        "documentation": {}
+    },
+    {
+        "label": "positionE1",
+        "kind": 5,
+        "importPath": "data.people-relation.data_util",
+        "description": "data.people-relation.data_util",
+        "peekOfCode": "positionE1 = deque()\npositionE2 = deque()\ncount = [0,0,0,0,0,0,0,0,0,0,0,0]\ntotal_data=0\nwith codecs.open('train.txt','r','utf-8') as tfc: \n    for lines in tfc:\n        line = lines.split()\n        if count[relation2id[line[2]]] <1500:\n            sentence = []\n            index1 = line[3].index(line[0])",
+        "detail": "data.people-relation.data_util",
+        "documentation": {}
+    },
+    {
+        "label": "positionE2",
+        "kind": 5,
+        "importPath": "data.people-relation.data_util",
+        "description": "data.people-relation.data_util",
+        "peekOfCode": "positionE2 = deque()\ncount = [0,0,0,0,0,0,0,0,0,0,0,0]\ntotal_data=0\nwith codecs.open('train.txt','r','utf-8') as tfc: \n    for lines in tfc:\n        line = lines.split()\n        if count[relation2id[line[2]]] <1500:\n            sentence = []\n            index1 = line[3].index(line[0])\n            position1 = []",
+        "detail": "data.people-relation.data_util",
+        "documentation": {}
+    },
+    {
+        "label": "count",
+        "kind": 5,
+        "importPath": "data.people-relation.data_util",
+        "description": "data.people-relation.data_util",
+        "peekOfCode": "count = [0,0,0,0,0,0,0,0,0,0,0,0]\ntotal_data=0\nwith codecs.open('train.txt','r','utf-8') as tfc: \n    for lines in tfc:\n        line = lines.split()\n        if count[relation2id[line[2]]] <1500:\n            sentence = []\n            index1 = line[3].index(line[0])\n            position1 = []\n            index2 = line[3].index(line[1])",
+        "detail": "data.people-relation.data_util",
+        "documentation": {}
+    },
+    {
+        "label": "all_words",
+        "kind": 5,
+        "importPath": "data.people-relation.data_util",
+        "description": "data.people-relation.data_util",
+        "peekOfCode": "all_words = flatten(datas)\nsr_allwords = pd.Series(all_words)\nsr_allwords = sr_allwords.value_counts()\nset_words = sr_allwords.index\nset_ids = range(1, len(set_words)+1)\nword2id = pd.Series(set_ids, index=set_words)\nid2word = pd.Series(set_words, index=set_ids)\nword2id[\"BLANK\"]=len(word2id)+1\nword2id[\"UNKNOW\"]=len(word2id)+1\nid2word[len(id2word)+1]=\"BLANK\"",
+        "detail": "data.people-relation.data_util",
+        "documentation": {}
+    },
+    {
+        "label": "sr_allwords",
+        "kind": 5,
+        "importPath": "data.people-relation.data_util",
+        "description": "data.people-relation.data_util",
+        "peekOfCode": "sr_allwords = pd.Series(all_words)\nsr_allwords = sr_allwords.value_counts()\nset_words = sr_allwords.index\nset_ids = range(1, len(set_words)+1)\nword2id = pd.Series(set_ids, index=set_words)\nid2word = pd.Series(set_words, index=set_ids)\nword2id[\"BLANK\"]=len(word2id)+1\nword2id[\"UNKNOW\"]=len(word2id)+1\nid2word[len(id2word)+1]=\"BLANK\"\nid2word[len(id2word)+1]=\"UNKNOW\"",
+        "detail": "data.people-relation.data_util",
+        "documentation": {}
+    },
+    {
+        "label": "sr_allwords",
+        "kind": 5,
+        "importPath": "data.people-relation.data_util",
+        "description": "data.people-relation.data_util",
+        "peekOfCode": "sr_allwords = sr_allwords.value_counts()\nset_words = sr_allwords.index\nset_ids = range(1, len(set_words)+1)\nword2id = pd.Series(set_ids, index=set_words)\nid2word = pd.Series(set_words, index=set_ids)\nword2id[\"BLANK\"]=len(word2id)+1\nword2id[\"UNKNOW\"]=len(word2id)+1\nid2word[len(id2word)+1]=\"BLANK\"\nid2word[len(id2word)+1]=\"UNKNOW\"\n#print \"word2id\",id2word",
+        "detail": "data.people-relation.data_util",
+        "documentation": {}
+    },
+    {
+        "label": "set_words",
+        "kind": 5,
+        "importPath": "data.people-relation.data_util",
+        "description": "data.people-relation.data_util",
+        "peekOfCode": "set_words = sr_allwords.index\nset_ids = range(1, len(set_words)+1)\nword2id = pd.Series(set_ids, index=set_words)\nid2word = pd.Series(set_words, index=set_ids)\nword2id[\"BLANK\"]=len(word2id)+1\nword2id[\"UNKNOW\"]=len(word2id)+1\nid2word[len(id2word)+1]=\"BLANK\"\nid2word[len(id2word)+1]=\"UNKNOW\"\n#print \"word2id\",id2word\nmax_len = 50",
+        "detail": "data.people-relation.data_util",
+        "documentation": {}
+    },
+    {
+        "label": "set_ids",
+        "kind": 5,
+        "importPath": "data.people-relation.data_util",
+        "description": "data.people-relation.data_util",
+        "peekOfCode": "set_ids = range(1, len(set_words)+1)\nword2id = pd.Series(set_ids, index=set_words)\nid2word = pd.Series(set_words, index=set_ids)\nword2id[\"BLANK\"]=len(word2id)+1\nword2id[\"UNKNOW\"]=len(word2id)+1\nid2word[len(id2word)+1]=\"BLANK\"\nid2word[len(id2word)+1]=\"UNKNOW\"\n#print \"word2id\",id2word\nmax_len = 50\ndef X_padding(words):",
+        "detail": "data.people-relation.data_util",
+        "documentation": {}
+    },
+    {
+        "label": "word2id",
+        "kind": 5,
+        "importPath": "data.people-relation.data_util",
+        "description": "data.people-relation.data_util",
+        "peekOfCode": "word2id = pd.Series(set_ids, index=set_words)\nid2word = pd.Series(set_words, index=set_ids)\nword2id[\"BLANK\"]=len(word2id)+1\nword2id[\"UNKNOW\"]=len(word2id)+1\nid2word[len(id2word)+1]=\"BLANK\"\nid2word[len(id2word)+1]=\"UNKNOW\"\n#print \"word2id\",id2word\nmax_len = 50\ndef X_padding(words):\n    \"\"\"把 words 转为 id 形式，并自动补全位 max_len 长度。\"\"\"",
+        "detail": "data.people-relation.data_util",
+        "documentation": {}
+    },
+    {
+        "label": "id2word",
+        "kind": 5,
+        "importPath": "data.people-relation.data_util",
+        "description": "data.people-relation.data_util",
+        "peekOfCode": "id2word = pd.Series(set_words, index=set_ids)\nword2id[\"BLANK\"]=len(word2id)+1\nword2id[\"UNKNOW\"]=len(word2id)+1\nid2word[len(id2word)+1]=\"BLANK\"\nid2word[len(id2word)+1]=\"UNKNOW\"\n#print \"word2id\",id2word\nmax_len = 50\ndef X_padding(words):\n    \"\"\"把 words 转为 id 形式，并自动补全位 max_len 长度。\"\"\"\n    ids = []",
+        "detail": "data.people-relation.data_util",
+        "documentation": {}
+    },
+    {
+        "label": "max_len",
+        "kind": 5,
+        "importPath": "data.people-relation.data_util",
+        "description": "data.people-relation.data_util",
+        "peekOfCode": "max_len = 50\ndef X_padding(words):\n    \"\"\"把 words 转为 id 形式，并自动补全位 max_len 长度。\"\"\"\n    ids = []\n    for i in words:\n        if i in word2id:\n            ids.append(word2id[i])\n        else:\n            ids.append(word2id[\"UNKNOW\"])\n    if len(ids) >= max_len: ",
+        "detail": "data.people-relation.data_util",
+        "documentation": {}
+    },
+    {
+        "label": "df_data",
+        "kind": 5,
+        "importPath": "data.people-relation.data_util",
+        "description": "data.people-relation.data_util",
+        "peekOfCode": "df_data = pd.DataFrame({'words': datas, 'tags': labels,'positionE1':positionE1,'positionE2':positionE2}, index=range(len(datas)))\ndf_data['words'] = df_data['words'].apply(X_padding)\ndf_data['tags'] = df_data['tags']\ndf_data['positionE1'] = df_data['positionE1'].apply(position_padding)\ndf_data['positionE2'] = df_data['positionE2'].apply(position_padding)\ndatas = np.asarray(list(df_data['words'].values))\nlabels = np.asarray(list(df_data['tags'].values))\npositionE1 = np.asarray(list(df_data['positionE1'].values))\npositionE2 = np.asarray(list(df_data['positionE2'].values))\nprint datas.shape",
+        "detail": "data.people-relation.data_util",
+        "documentation": {}
+    },
+    {
+        "label": "df_data['words']",
+        "kind": 5,
+        "importPath": "data.people-relation.data_util",
+        "description": "data.people-relation.data_util",
+        "peekOfCode": "df_data['words'] = df_data['words'].apply(X_padding)\ndf_data['tags'] = df_data['tags']\ndf_data['positionE1'] = df_data['positionE1'].apply(position_padding)\ndf_data['positionE2'] = df_data['positionE2'].apply(position_padding)\ndatas = np.asarray(list(df_data['words'].values))\nlabels = np.asarray(list(df_data['tags'].values))\npositionE1 = np.asarray(list(df_data['positionE1'].values))\npositionE2 = np.asarray(list(df_data['positionE2'].values))\nprint datas.shape\nprint labels.shape",
+        "detail": "data.people-relation.data_util",
+        "documentation": {}
+    },
+    {
+        "label": "df_data['tags']",
+        "kind": 5,
+        "importPath": "data.people-relation.data_util",
+        "description": "data.people-relation.data_util",
+        "peekOfCode": "df_data['tags'] = df_data['tags']\ndf_data['positionE1'] = df_data['positionE1'].apply(position_padding)\ndf_data['positionE2'] = df_data['positionE2'].apply(position_padding)\ndatas = np.asarray(list(df_data['words'].values))\nlabels = np.asarray(list(df_data['tags'].values))\npositionE1 = np.asarray(list(df_data['positionE1'].values))\npositionE2 = np.asarray(list(df_data['positionE2'].values))\nprint datas.shape\nprint labels.shape\nprint positionE1.shape",
+        "detail": "data.people-relation.data_util",
+        "documentation": {}
+    },
+    {
+        "label": "df_data['positionE1']",
+        "kind": 5,
+        "importPath": "data.people-relation.data_util",
+        "description": "data.people-relation.data_util",
+        "peekOfCode": "df_data['positionE1'] = df_data['positionE1'].apply(position_padding)\ndf_data['positionE2'] = df_data['positionE2'].apply(position_padding)\ndatas = np.asarray(list(df_data['words'].values))\nlabels = np.asarray(list(df_data['tags'].values))\npositionE1 = np.asarray(list(df_data['positionE1'].values))\npositionE2 = np.asarray(list(df_data['positionE2'].values))\nprint datas.shape\nprint labels.shape\nprint positionE1.shape\nprint positionE2.shape",
+        "detail": "data.people-relation.data_util",
+        "documentation": {}
+    },
+    {
+        "label": "df_data['positionE2']",
+        "kind": 5,
+        "importPath": "data.people-relation.data_util",
+        "description": "data.people-relation.data_util",
+        "peekOfCode": "df_data['positionE2'] = df_data['positionE2'].apply(position_padding)\ndatas = np.asarray(list(df_data['words'].values))\nlabels = np.asarray(list(df_data['tags'].values))\npositionE1 = np.asarray(list(df_data['positionE1'].values))\npositionE2 = np.asarray(list(df_data['positionE2'].values))\nprint datas.shape\nprint labels.shape\nprint positionE1.shape\nprint positionE2.shape\nimport pickle",
+        "detail": "data.people-relation.data_util",
+        "documentation": {}
+    },
+    {
+        "label": "datas",
+        "kind": 5,
+        "importPath": "data.people-relation.data_util",
+        "description": "data.people-relation.data_util",
+        "peekOfCode": "datas = np.asarray(list(df_data['words'].values))\nlabels = np.asarray(list(df_data['tags'].values))\npositionE1 = np.asarray(list(df_data['positionE1'].values))\npositionE2 = np.asarray(list(df_data['positionE2'].values))\nprint datas.shape\nprint labels.shape\nprint positionE1.shape\nprint positionE2.shape\nimport pickle\nwith open('../people_relation_train.pkl', 'wb') as outp:",
+        "detail": "data.people-relation.data_util",
+        "documentation": {}
+    },
+    {
+        "label": "labels",
+        "kind": 5,
+        "importPath": "data.people-relation.data_util",
+        "description": "data.people-relation.data_util",
+        "peekOfCode": "labels = np.asarray(list(df_data['tags'].values))\npositionE1 = np.asarray(list(df_data['positionE1'].values))\npositionE2 = np.asarray(list(df_data['positionE2'].values))\nprint datas.shape\nprint labels.shape\nprint positionE1.shape\nprint positionE2.shape\nimport pickle\nwith open('../people_relation_train.pkl', 'wb') as outp:\n\tpickle.dump(word2id, outp)",
+        "detail": "data.people-relation.data_util",
+        "documentation": {}
+    },
+    {
+        "label": "positionE1",
+        "kind": 5,
+        "importPath": "data.people-relation.data_util",
+        "description": "data.people-relation.data_util",
+        "peekOfCode": "positionE1 = np.asarray(list(df_data['positionE1'].values))\npositionE2 = np.asarray(list(df_data['positionE2'].values))\nprint datas.shape\nprint labels.shape\nprint positionE1.shape\nprint positionE2.shape\nimport pickle\nwith open('../people_relation_train.pkl', 'wb') as outp:\n\tpickle.dump(word2id, outp)\n\tpickle.dump(id2word, outp)",
+        "detail": "data.people-relation.data_util",
+        "documentation": {}
+    },
+    {
+        "label": "positionE2",
+        "kind": 5,
+        "importPath": "data.people-relation.data_util",
+        "description": "data.people-relation.data_util",
+        "peekOfCode": "positionE2 = np.asarray(list(df_data['positionE2'].values))\nprint datas.shape\nprint labels.shape\nprint positionE1.shape\nprint positionE2.shape\nimport pickle\nwith open('../people_relation_train.pkl', 'wb') as outp:\n\tpickle.dump(word2id, outp)\n\tpickle.dump(id2word, outp)\n\tpickle.dump(relation2id, outp)",
+        "detail": "data.people-relation.data_util",
+        "documentation": {}
+    },
+    {
+        "label": "datas",
+        "kind": 5,
+        "importPath": "data.people-relation.data_util",
+        "description": "data.people-relation.data_util",
+        "peekOfCode": "datas = deque()\nlabels = deque()\npositionE1 = deque()\npositionE2 = deque()\ncount = [0,0,0,0,0,0,0,0,0,0,0,0]\nwith codecs.open('train.txt','r','utf-8') as tfc: \n    for lines in tfc:\n        line = lines.split()\n        if count[relation2id[line[2]]] >1500 and count[relation2id[line[2]]]<=1800:\n        #if count[relation2id[line[2]]] <=1500:",
+        "detail": "data.people-relation.data_util",
+        "documentation": {}
+    },
+    {
+        "label": "labels",
+        "kind": 5,
+        "importPath": "data.people-relation.data_util",
+        "description": "data.people-relation.data_util",
+        "peekOfCode": "labels = deque()\npositionE1 = deque()\npositionE2 = deque()\ncount = [0,0,0,0,0,0,0,0,0,0,0,0]\nwith codecs.open('train.txt','r','utf-8') as tfc: \n    for lines in tfc:\n        line = lines.split()\n        if count[relation2id[line[2]]] >1500 and count[relation2id[line[2]]]<=1800:\n        #if count[relation2id[line[2]]] <=1500:\n            sentence = []",
+        "detail": "data.people-relation.data_util",
+        "documentation": {}
+    },
+    {
+        "label": "positionE1",
+        "kind": 5,
+        "importPath": "data.people-relation.data_util",
+        "description": "data.people-relation.data_util",
+        "peekOfCode": "positionE1 = deque()\npositionE2 = deque()\ncount = [0,0,0,0,0,0,0,0,0,0,0,0]\nwith codecs.open('train.txt','r','utf-8') as tfc: \n    for lines in tfc:\n        line = lines.split()\n        if count[relation2id[line[2]]] >1500 and count[relation2id[line[2]]]<=1800:\n        #if count[relation2id[line[2]]] <=1500:\n            sentence = []\n            index1 = line[3].index(line[0])",
+        "detail": "data.people-relation.data_util",
+        "documentation": {}
+    },
+    {
+        "label": "positionE2",
+        "kind": 5,
+        "importPath": "data.people-relation.data_util",
+        "description": "data.people-relation.data_util",
+        "peekOfCode": "positionE2 = deque()\ncount = [0,0,0,0,0,0,0,0,0,0,0,0]\nwith codecs.open('train.txt','r','utf-8') as tfc: \n    for lines in tfc:\n        line = lines.split()\n        if count[relation2id[line[2]]] >1500 and count[relation2id[line[2]]]<=1800:\n        #if count[relation2id[line[2]]] <=1500:\n            sentence = []\n            index1 = line[3].index(line[0])\n            position1 = []",
+        "detail": "data.people-relation.data_util",
+        "documentation": {}
+    },
+    {
+        "label": "count",
+        "kind": 5,
+        "importPath": "data.people-relation.data_util",
+        "description": "data.people-relation.data_util",
+        "peekOfCode": "count = [0,0,0,0,0,0,0,0,0,0,0,0]\nwith codecs.open('train.txt','r','utf-8') as tfc: \n    for lines in tfc:\n        line = lines.split()\n        if count[relation2id[line[2]]] >1500 and count[relation2id[line[2]]]<=1800:\n        #if count[relation2id[line[2]]] <=1500:\n            sentence = []\n            index1 = line[3].index(line[0])\n            position1 = []\n            index2 = line[3].index(line[1])",
+        "detail": "data.people-relation.data_util",
+        "documentation": {}
+    },
+    {
+        "label": "df_data",
+        "kind": 5,
+        "importPath": "data.people-relation.data_util",
+        "description": "data.people-relation.data_util",
+        "peekOfCode": "df_data = pd.DataFrame({'words': datas, 'tags': labels,'positionE1':positionE1,'positionE2':positionE2}, index=range(len(datas)))\ndf_data['words'] = df_data['words'].apply(X_padding)\ndf_data['tags'] = df_data['tags']\ndf_data['positionE1'] = df_data['positionE1'].apply(position_padding)\ndf_data['positionE2'] = df_data['positionE2'].apply(position_padding)\ndatas = np.asarray(list(df_data['words'].values))\nlabels = np.asarray(list(df_data['tags'].values))\npositionE1 = np.asarray(list(df_data['positionE1'].values))\npositionE2 = np.asarray(list(df_data['positionE2'].values))\nimport pickle",
+        "detail": "data.people-relation.data_util",
+        "documentation": {}
+    },
+    {
+        "label": "df_data['words']",
+        "kind": 5,
+        "importPath": "data.people-relation.data_util",
+        "description": "data.people-relation.data_util",
+        "peekOfCode": "df_data['words'] = df_data['words'].apply(X_padding)\ndf_data['tags'] = df_data['tags']\ndf_data['positionE1'] = df_data['positionE1'].apply(position_padding)\ndf_data['positionE2'] = df_data['positionE2'].apply(position_padding)\ndatas = np.asarray(list(df_data['words'].values))\nlabels = np.asarray(list(df_data['tags'].values))\npositionE1 = np.asarray(list(df_data['positionE1'].values))\npositionE2 = np.asarray(list(df_data['positionE2'].values))\nimport pickle\nwith open('../people_relation_test.pkl', 'wb') as outp:",
+        "detail": "data.people-relation.data_util",
+        "documentation": {}
+    },
+    {
+        "label": "df_data['tags']",
+        "kind": 5,
+        "importPath": "data.people-relation.data_util",
+        "description": "data.people-relation.data_util",
+        "peekOfCode": "df_data['tags'] = df_data['tags']\ndf_data['positionE1'] = df_data['positionE1'].apply(position_padding)\ndf_data['positionE2'] = df_data['positionE2'].apply(position_padding)\ndatas = np.asarray(list(df_data['words'].values))\nlabels = np.asarray(list(df_data['tags'].values))\npositionE1 = np.asarray(list(df_data['positionE1'].values))\npositionE2 = np.asarray(list(df_data['positionE2'].values))\nimport pickle\nwith open('../people_relation_test.pkl', 'wb') as outp:\n\tpickle.dump(datas, outp)",
+        "detail": "data.people-relation.data_util",
+        "documentation": {}
+    },
+    {
+        "label": "df_data['positionE1']",
+        "kind": 5,
+        "importPath": "data.people-relation.data_util",
+        "description": "data.people-relation.data_util",
+        "peekOfCode": "df_data['positionE1'] = df_data['positionE1'].apply(position_padding)\ndf_data['positionE2'] = df_data['positionE2'].apply(position_padding)\ndatas = np.asarray(list(df_data['words'].values))\nlabels = np.asarray(list(df_data['tags'].values))\npositionE1 = np.asarray(list(df_data['positionE1'].values))\npositionE2 = np.asarray(list(df_data['positionE2'].values))\nimport pickle\nwith open('../people_relation_test.pkl', 'wb') as outp:\n\tpickle.dump(datas, outp)\n\tpickle.dump(labels, outp)",
+        "detail": "data.people-relation.data_util",
+        "documentation": {}
+    },
+    {
+        "label": "df_data['positionE2']",
+        "kind": 5,
+        "importPath": "data.people-relation.data_util",
+        "description": "data.people-relation.data_util",
+        "peekOfCode": "df_data['positionE2'] = df_data['positionE2'].apply(position_padding)\ndatas = np.asarray(list(df_data['words'].values))\nlabels = np.asarray(list(df_data['tags'].values))\npositionE1 = np.asarray(list(df_data['positionE1'].values))\npositionE2 = np.asarray(list(df_data['positionE2'].values))\nimport pickle\nwith open('../people_relation_test.pkl', 'wb') as outp:\n\tpickle.dump(datas, outp)\n\tpickle.dump(labels, outp)\n\tpickle.dump(positionE1, outp)",
+        "detail": "data.people-relation.data_util",
+        "documentation": {}
+    },
+    {
+        "label": "datas",
+        "kind": 5,
+        "importPath": "data.people-relation.data_util",
+        "description": "data.people-relation.data_util",
+        "peekOfCode": "datas = np.asarray(list(df_data['words'].values))\nlabels = np.asarray(list(df_data['tags'].values))\npositionE1 = np.asarray(list(df_data['positionE1'].values))\npositionE2 = np.asarray(list(df_data['positionE2'].values))\nimport pickle\nwith open('../people_relation_test.pkl', 'wb') as outp:\n\tpickle.dump(datas, outp)\n\tpickle.dump(labels, outp)\n\tpickle.dump(positionE1, outp)\n\tpickle.dump(positionE2, outp)",
+        "detail": "data.people-relation.data_util",
+        "documentation": {}
+    },
+    {
+        "label": "labels",
+        "kind": 5,
+        "importPath": "data.people-relation.data_util",
+        "description": "data.people-relation.data_util",
+        "peekOfCode": "labels = np.asarray(list(df_data['tags'].values))\npositionE1 = np.asarray(list(df_data['positionE1'].values))\npositionE2 = np.asarray(list(df_data['positionE2'].values))\nimport pickle\nwith open('../people_relation_test.pkl', 'wb') as outp:\n\tpickle.dump(datas, outp)\n\tpickle.dump(labels, outp)\n\tpickle.dump(positionE1, outp)\n\tpickle.dump(positionE2, outp)\nprint '** Finished saving the data.'",
+        "detail": "data.people-relation.data_util",
+        "documentation": {}
+    },
+    {
+        "label": "positionE1",
+        "kind": 5,
+        "importPath": "data.people-relation.data_util",
+        "description": "data.people-relation.data_util",
+        "peekOfCode": "positionE1 = np.asarray(list(df_data['positionE1'].values))\npositionE2 = np.asarray(list(df_data['positionE2'].values))\nimport pickle\nwith open('../people_relation_test.pkl', 'wb') as outp:\n\tpickle.dump(datas, outp)\n\tpickle.dump(labels, outp)\n\tpickle.dump(positionE1, outp)\n\tpickle.dump(positionE2, outp)\nprint '** Finished saving the data.'",
+        "detail": "data.people-relation.data_util",
+        "documentation": {}
+    },
+    {
+        "label": "positionE2",
+        "kind": 5,
+        "importPath": "data.people-relation.data_util",
+        "description": "data.people-relation.data_util",
+        "peekOfCode": "positionE2 = np.asarray(list(df_data['positionE2'].values))\nimport pickle\nwith open('../people_relation_test.pkl', 'wb') as outp:\n\tpickle.dump(datas, outp)\n\tpickle.dump(labels, outp)\n\tpickle.dump(positionE1, outp)\n\tpickle.dump(positionE2, outp)\nprint '** Finished saving the data.'",
+        "detail": "data.people-relation.data_util",
+        "documentation": {}
+    },
+    {
+        "label": "X_padding",
+        "kind": 2,
+        "importPath": "data.SemEval2010_task8_all_data.data_util",
+        "description": "data.SemEval2010_task8_all_data.data_util",
+        "peekOfCode": "def X_padding(words):\n    ids = []\n    for word in words:\n        if word in word2id:\n            ids.append(word2id[word])\n        else:\n            ids.append(word2id[\"UNKNOW\"])\n    if len(ids) >= max_len: \n        return ids[:max_len]\n    ids.extend([word2id[\"BLANK\"]]*(max_len-len(ids))) ",
+        "detail": "data.SemEval2010_task8_all_data.data_util",
+        "documentation": {}
+    },
+    {
+        "label": "pos_padding",
+        "kind": 2,
+        "importPath": "data.SemEval2010_task8_all_data.data_util",
+        "description": "data.SemEval2010_task8_all_data.data_util",
+        "peekOfCode": "def pos_padding(index):\n    ids=[]    \n    for i in range(max_len):\n        ids.append(i-index+max_len)\n    if max_len-index<0:\n        print index,ids\n    return ids\nx = deque()\npos_e1 = deque()\npos_e2 = deque()",
+        "detail": "data.SemEval2010_task8_all_data.data_util",
+        "documentation": {}
+    },
+    {
+        "label": "relation2id",
+        "kind": 5,
+        "importPath": "data.SemEval2010_task8_all_data.data_util",
+        "description": "data.SemEval2010_task8_all_data.data_util",
+        "peekOfCode": "relation2id = {\n\"Other\": 0,\n\"Cause-Effect\": 1,\n\"Instrument-Agency\":2,\n\"Product-Producer\":3,\n\"Content-Container\":4,\n\"Entity-Origin\":5,\n\"Entity-Destination\":6,\n\"Component-Whole\":7,\n\"Member-Collection\":8,",
+        "detail": "data.SemEval2010_task8_all_data.data_util",
+        "documentation": {}
+    },
+    {
+        "label": "datas",
+        "kind": 5,
+        "importPath": "data.SemEval2010_task8_all_data.data_util",
+        "description": "data.SemEval2010_task8_all_data.data_util",
+        "peekOfCode": "datas = deque()\nlabels = deque()\nentity1 = deque()\nentity2 = deque()\nwith codecs.open('TRAIN_FILE.TXT','r','utf-8') as tra:\n    linenum = 0\n    for line in tra:\n        linenum+=1\n        if linenum%4==1:\n            line = line.split('\\t')[1]",
+        "detail": "data.SemEval2010_task8_all_data.data_util",
+        "documentation": {}
+    },
+    {
+        "label": "labels",
+        "kind": 5,
+        "importPath": "data.SemEval2010_task8_all_data.data_util",
+        "description": "data.SemEval2010_task8_all_data.data_util",
+        "peekOfCode": "labels = deque()\nentity1 = deque()\nentity2 = deque()\nwith codecs.open('TRAIN_FILE.TXT','r','utf-8') as tra:\n    linenum = 0\n    for line in tra:\n        linenum+=1\n        if linenum%4==1:\n            line = line.split('\\t')[1]\n            word_arr = line[1:-4].split()",
+        "detail": "data.SemEval2010_task8_all_data.data_util",
+        "documentation": {}
+    },
+    {
+        "label": "entity1",
+        "kind": 5,
+        "importPath": "data.SemEval2010_task8_all_data.data_util",
+        "description": "data.SemEval2010_task8_all_data.data_util",
+        "peekOfCode": "entity1 = deque()\nentity2 = deque()\nwith codecs.open('TRAIN_FILE.TXT','r','utf-8') as tra:\n    linenum = 0\n    for line in tra:\n        linenum+=1\n        if linenum%4==1:\n            line = line.split('\\t')[1]\n            word_arr = line[1:-4].split()\n            for index in range(len(word_arr)):",
+        "detail": "data.SemEval2010_task8_all_data.data_util",
+        "documentation": {}
+    },
+    {
+        "label": "entity2",
+        "kind": 5,
+        "importPath": "data.SemEval2010_task8_all_data.data_util",
+        "description": "data.SemEval2010_task8_all_data.data_util",
+        "peekOfCode": "entity2 = deque()\nwith codecs.open('TRAIN_FILE.TXT','r','utf-8') as tra:\n    linenum = 0\n    for line in tra:\n        linenum+=1\n        if linenum%4==1:\n            line = line.split('\\t')[1]\n            word_arr = line[1:-4].split()\n            for index in range(len(word_arr)):\n                if \"<e1>\" in word_arr[index]:",
+        "detail": "data.SemEval2010_task8_all_data.data_util",
+        "documentation": {}
+    },
+    {
+        "label": "all_words",
+        "kind": 5,
+        "importPath": "data.SemEval2010_task8_all_data.data_util",
+        "description": "data.SemEval2010_task8_all_data.data_util",
+        "peekOfCode": "all_words = flatten(datas)\nsr_allwords = pd.Series(all_words)\nsr_allwords = sr_allwords.value_counts()\n#print sr_allwords\nset_words = sr_allwords.index\nset_ids = range(1, len(set_words)+1)\nword2id = pd.Series(set_ids, index=set_words)\nid2word = pd.Series(set_words, index=set_ids)\nword2id[\"BLANK\"]=len(word2id)+1\nword2id[\"UNKNOW\"]=len(word2id)+1",
+        "detail": "data.SemEval2010_task8_all_data.data_util",
+        "documentation": {}
+    },
+    {
+        "label": "sr_allwords",
+        "kind": 5,
+        "importPath": "data.SemEval2010_task8_all_data.data_util",
+        "description": "data.SemEval2010_task8_all_data.data_util",
+        "peekOfCode": "sr_allwords = pd.Series(all_words)\nsr_allwords = sr_allwords.value_counts()\n#print sr_allwords\nset_words = sr_allwords.index\nset_ids = range(1, len(set_words)+1)\nword2id = pd.Series(set_ids, index=set_words)\nid2word = pd.Series(set_words, index=set_ids)\nword2id[\"BLANK\"]=len(word2id)+1\nword2id[\"UNKNOW\"]=len(word2id)+1\nprint word2id",
+        "detail": "data.SemEval2010_task8_all_data.data_util",
+        "documentation": {}
+    },
+    {
+        "label": "sr_allwords",
+        "kind": 5,
+        "importPath": "data.SemEval2010_task8_all_data.data_util",
+        "description": "data.SemEval2010_task8_all_data.data_util",
+        "peekOfCode": "sr_allwords = sr_allwords.value_counts()\n#print sr_allwords\nset_words = sr_allwords.index\nset_ids = range(1, len(set_words)+1)\nword2id = pd.Series(set_ids, index=set_words)\nid2word = pd.Series(set_words, index=set_ids)\nword2id[\"BLANK\"]=len(word2id)+1\nword2id[\"UNKNOW\"]=len(word2id)+1\nprint word2id\nmax_len = 70",
+        "detail": "data.SemEval2010_task8_all_data.data_util",
+        "documentation": {}
+    },
+    {
+        "label": "set_words",
+        "kind": 5,
+        "importPath": "data.SemEval2010_task8_all_data.data_util",
+        "description": "data.SemEval2010_task8_all_data.data_util",
+        "peekOfCode": "set_words = sr_allwords.index\nset_ids = range(1, len(set_words)+1)\nword2id = pd.Series(set_ids, index=set_words)\nid2word = pd.Series(set_words, index=set_ids)\nword2id[\"BLANK\"]=len(word2id)+1\nword2id[\"UNKNOW\"]=len(word2id)+1\nprint word2id\nmax_len = 70\nsenssslen = 0\ndef X_padding(words):",
+        "detail": "data.SemEval2010_task8_all_data.data_util",
+        "documentation": {}
+    },
+    {
+        "label": "set_ids",
+        "kind": 5,
+        "importPath": "data.SemEval2010_task8_all_data.data_util",
+        "description": "data.SemEval2010_task8_all_data.data_util",
+        "peekOfCode": "set_ids = range(1, len(set_words)+1)\nword2id = pd.Series(set_ids, index=set_words)\nid2word = pd.Series(set_words, index=set_ids)\nword2id[\"BLANK\"]=len(word2id)+1\nword2id[\"UNKNOW\"]=len(word2id)+1\nprint word2id\nmax_len = 70\nsenssslen = 0\ndef X_padding(words):\n    ids = []",
+        "detail": "data.SemEval2010_task8_all_data.data_util",
+        "documentation": {}
+    },
+    {
+        "label": "word2id",
+        "kind": 5,
+        "importPath": "data.SemEval2010_task8_all_data.data_util",
+        "description": "data.SemEval2010_task8_all_data.data_util",
+        "peekOfCode": "word2id = pd.Series(set_ids, index=set_words)\nid2word = pd.Series(set_words, index=set_ids)\nword2id[\"BLANK\"]=len(word2id)+1\nword2id[\"UNKNOW\"]=len(word2id)+1\nprint word2id\nmax_len = 70\nsenssslen = 0\ndef X_padding(words):\n    ids = []\n    for word in words:",
+        "detail": "data.SemEval2010_task8_all_data.data_util",
+        "documentation": {}
+    },
+    {
+        "label": "id2word",
+        "kind": 5,
+        "importPath": "data.SemEval2010_task8_all_data.data_util",
+        "description": "data.SemEval2010_task8_all_data.data_util",
+        "peekOfCode": "id2word = pd.Series(set_words, index=set_ids)\nword2id[\"BLANK\"]=len(word2id)+1\nword2id[\"UNKNOW\"]=len(word2id)+1\nprint word2id\nmax_len = 70\nsenssslen = 0\ndef X_padding(words):\n    ids = []\n    for word in words:\n        if word in word2id:",
+        "detail": "data.SemEval2010_task8_all_data.data_util",
+        "documentation": {}
+    },
+    {
+        "label": "max_len",
+        "kind": 5,
+        "importPath": "data.SemEval2010_task8_all_data.data_util",
+        "description": "data.SemEval2010_task8_all_data.data_util",
+        "peekOfCode": "max_len = 70\nsenssslen = 0\ndef X_padding(words):\n    ids = []\n    for word in words:\n        if word in word2id:\n            ids.append(word2id[word])\n        else:\n            ids.append(word2id[\"UNKNOW\"])\n    if len(ids) >= max_len: ",
+        "detail": "data.SemEval2010_task8_all_data.data_util",
+        "documentation": {}
+    },
+    {
+        "label": "senssslen",
+        "kind": 5,
+        "importPath": "data.SemEval2010_task8_all_data.data_util",
+        "description": "data.SemEval2010_task8_all_data.data_util",
+        "peekOfCode": "senssslen = 0\ndef X_padding(words):\n    ids = []\n    for word in words:\n        if word in word2id:\n            ids.append(word2id[word])\n        else:\n            ids.append(word2id[\"UNKNOW\"])\n    if len(ids) >= max_len: \n        return ids[:max_len]",
+        "detail": "data.SemEval2010_task8_all_data.data_util",
+        "documentation": {}
+    },
+    {
+        "label": "x",
+        "kind": 5,
+        "importPath": "data.SemEval2010_task8_all_data.data_util",
+        "description": "data.SemEval2010_task8_all_data.data_util",
+        "peekOfCode": "x = deque()\npos_e1 = deque()\npos_e2 = deque()\nfor index in range(len(datas)):\n    x.append(X_padding(datas[index]))\n    pos_e1.append(pos_padding(entity1[index]))\n    pos_e2.append(pos_padding(entity2[index]))\nx = np.asarray(x)\ny = np.asarray(labels)\npos_e1 = np.asarray(pos_e1)",
+        "detail": "data.SemEval2010_task8_all_data.data_util",
+        "documentation": {}
+    },
+    {
+        "label": "pos_e1",
+        "kind": 5,
+        "importPath": "data.SemEval2010_task8_all_data.data_util",
+        "description": "data.SemEval2010_task8_all_data.data_util",
+        "peekOfCode": "pos_e1 = deque()\npos_e2 = deque()\nfor index in range(len(datas)):\n    x.append(X_padding(datas[index]))\n    pos_e1.append(pos_padding(entity1[index]))\n    pos_e2.append(pos_padding(entity2[index]))\nx = np.asarray(x)\ny = np.asarray(labels)\npos_e1 = np.asarray(pos_e1)\npos_e2 = np.asarray(pos_e2)",
+        "detail": "data.SemEval2010_task8_all_data.data_util",
+        "documentation": {}
+    },
+    {
+        "label": "pos_e2",
+        "kind": 5,
+        "importPath": "data.SemEval2010_task8_all_data.data_util",
+        "description": "data.SemEval2010_task8_all_data.data_util",
+        "peekOfCode": "pos_e2 = deque()\nfor index in range(len(datas)):\n    x.append(X_padding(datas[index]))\n    pos_e1.append(pos_padding(entity1[index]))\n    pos_e2.append(pos_padding(entity2[index]))\nx = np.asarray(x)\ny = np.asarray(labels)\npos_e1 = np.asarray(pos_e1)\npos_e2 = np.asarray(pos_e2)\nprint x.shape,y.shape,pos_e1.shape,pos_e2.shape",
+        "detail": "data.SemEval2010_task8_all_data.data_util",
+        "documentation": {}
+    },
+    {
+        "label": "x",
+        "kind": 5,
+        "importPath": "data.SemEval2010_task8_all_data.data_util",
+        "description": "data.SemEval2010_task8_all_data.data_util",
+        "peekOfCode": "x = np.asarray(x)\ny = np.asarray(labels)\npos_e1 = np.asarray(pos_e1)\npos_e2 = np.asarray(pos_e2)\nprint x.shape,y.shape,pos_e1.shape,pos_e2.shape\nimport pickle\nwith open('../engdata_train.pkl', 'wb') as outp:\n\tpickle.dump(word2id, outp)\n\tpickle.dump(id2word, outp)\n\tpickle.dump(relation2id, outp)",
+        "detail": "data.SemEval2010_task8_all_data.data_util",
+        "documentation": {}
+    },
+    {
+        "label": "y",
+        "kind": 5,
+        "importPath": "data.SemEval2010_task8_all_data.data_util",
+        "description": "data.SemEval2010_task8_all_data.data_util",
+        "peekOfCode": "y = np.asarray(labels)\npos_e1 = np.asarray(pos_e1)\npos_e2 = np.asarray(pos_e2)\nprint x.shape,y.shape,pos_e1.shape,pos_e2.shape\nimport pickle\nwith open('../engdata_train.pkl', 'wb') as outp:\n\tpickle.dump(word2id, outp)\n\tpickle.dump(id2word, outp)\n\tpickle.dump(relation2id, outp)\n\tpickle.dump(x, outp)",
+        "detail": "data.SemEval2010_task8_all_data.data_util",
+        "documentation": {}
+    },
+    {
+        "label": "pos_e1",
+        "kind": 5,
+        "importPath": "data.SemEval2010_task8_all_data.data_util",
+        "description": "data.SemEval2010_task8_all_data.data_util",
+        "peekOfCode": "pos_e1 = np.asarray(pos_e1)\npos_e2 = np.asarray(pos_e2)\nprint x.shape,y.shape,pos_e1.shape,pos_e2.shape\nimport pickle\nwith open('../engdata_train.pkl', 'wb') as outp:\n\tpickle.dump(word2id, outp)\n\tpickle.dump(id2word, outp)\n\tpickle.dump(relation2id, outp)\n\tpickle.dump(x, outp)\n\tpickle.dump(y, outp)",
+        "detail": "data.SemEval2010_task8_all_data.data_util",
+        "documentation": {}
+    },
+    {
+        "label": "pos_e2",
+        "kind": 5,
+        "importPath": "data.SemEval2010_task8_all_data.data_util",
+        "description": "data.SemEval2010_task8_all_data.data_util",
+        "peekOfCode": "pos_e2 = np.asarray(pos_e2)\nprint x.shape,y.shape,pos_e1.shape,pos_e2.shape\nimport pickle\nwith open('../engdata_train.pkl', 'wb') as outp:\n\tpickle.dump(word2id, outp)\n\tpickle.dump(id2word, outp)\n\tpickle.dump(relation2id, outp)\n\tpickle.dump(x, outp)\n\tpickle.dump(y, outp)\n\tpickle.dump(pos_e1, outp)",
+        "detail": "data.SemEval2010_task8_all_data.data_util",
+        "documentation": {}
+    },
+    {
+        "label": "datas",
+        "kind": 5,
+        "importPath": "data.SemEval2010_task8_all_data.data_util",
+        "description": "data.SemEval2010_task8_all_data.data_util",
+        "peekOfCode": "datas = deque()\nlabels = deque()\nentity1 = deque()\nentity2 = deque()\nwith codecs.open('TEST_FILE_FULL.TXT','r','utf-8') as tra:\n    linenum = 0\n    for line in tra:\n        linenum+=1\n        if linenum%4==1:\n            line = line.split('\\t')[1]",
+        "detail": "data.SemEval2010_task8_all_data.data_util",
+        "documentation": {}
+    },
+    {
+        "label": "labels",
+        "kind": 5,
+        "importPath": "data.SemEval2010_task8_all_data.data_util",
+        "description": "data.SemEval2010_task8_all_data.data_util",
+        "peekOfCode": "labels = deque()\nentity1 = deque()\nentity2 = deque()\nwith codecs.open('TEST_FILE_FULL.TXT','r','utf-8') as tra:\n    linenum = 0\n    for line in tra:\n        linenum+=1\n        if linenum%4==1:\n            line = line.split('\\t')[1]\n            word_arr = line[1:-4].split()",
+        "detail": "data.SemEval2010_task8_all_data.data_util",
+        "documentation": {}
+    },
+    {
+        "label": "entity1",
+        "kind": 5,
+        "importPath": "data.SemEval2010_task8_all_data.data_util",
+        "description": "data.SemEval2010_task8_all_data.data_util",
+        "peekOfCode": "entity1 = deque()\nentity2 = deque()\nwith codecs.open('TEST_FILE_FULL.TXT','r','utf-8') as tra:\n    linenum = 0\n    for line in tra:\n        linenum+=1\n        if linenum%4==1:\n            line = line.split('\\t')[1]\n            word_arr = line[1:-4].split()\n            for index in range(len(word_arr)):",
+        "detail": "data.SemEval2010_task8_all_data.data_util",
+        "documentation": {}
+    },
+    {
+        "label": "entity2",
+        "kind": 5,
+        "importPath": "data.SemEval2010_task8_all_data.data_util",
+        "description": "data.SemEval2010_task8_all_data.data_util",
+        "peekOfCode": "entity2 = deque()\nwith codecs.open('TEST_FILE_FULL.TXT','r','utf-8') as tra:\n    linenum = 0\n    for line in tra:\n        linenum+=1\n        if linenum%4==1:\n            line = line.split('\\t')[1]\n            word_arr = line[1:-4].split()\n            for index in range(len(word_arr)):\n                if \"<e1>\" in word_arr[index]:",
+        "detail": "data.SemEval2010_task8_all_data.data_util",
+        "documentation": {}
+    },
+    {
+        "label": "x",
+        "kind": 5,
+        "importPath": "data.SemEval2010_task8_all_data.data_util",
+        "description": "data.SemEval2010_task8_all_data.data_util",
+        "peekOfCode": "x = deque()\npos_e1 = deque()\npos_e2 = deque()\nfor index in range(len(datas)):\n    x.append(X_padding(datas[index]))\n    pos_e1.append(pos_padding(entity1[index]))\n    pos_e2.append(pos_padding(entity2[index]))\nx = np.asarray(x)\ny = np.asarray(labels)\npos_e1 = np.asarray(pos_e1)",
+        "detail": "data.SemEval2010_task8_all_data.data_util",
+        "documentation": {}
+    },
+    {
+        "label": "pos_e1",
+        "kind": 5,
+        "importPath": "data.SemEval2010_task8_all_data.data_util",
+        "description": "data.SemEval2010_task8_all_data.data_util",
+        "peekOfCode": "pos_e1 = deque()\npos_e2 = deque()\nfor index in range(len(datas)):\n    x.append(X_padding(datas[index]))\n    pos_e1.append(pos_padding(entity1[index]))\n    pos_e2.append(pos_padding(entity2[index]))\nx = np.asarray(x)\ny = np.asarray(labels)\npos_e1 = np.asarray(pos_e1)\npos_e2 = np.asarray(pos_e2)",
+        "detail": "data.SemEval2010_task8_all_data.data_util",
+        "documentation": {}
+    },
+    {
+        "label": "pos_e2",
+        "kind": 5,
+        "importPath": "data.SemEval2010_task8_all_data.data_util",
+        "description": "data.SemEval2010_task8_all_data.data_util",
+        "peekOfCode": "pos_e2 = deque()\nfor index in range(len(datas)):\n    x.append(X_padding(datas[index]))\n    pos_e1.append(pos_padding(entity1[index]))\n    pos_e2.append(pos_padding(entity2[index]))\nx = np.asarray(x)\ny = np.asarray(labels)\npos_e1 = np.asarray(pos_e1)\npos_e2 = np.asarray(pos_e2)\nprint x.shape,y.shape,pos_e1.shape,pos_e2.shape",
+        "detail": "data.SemEval2010_task8_all_data.data_util",
+        "documentation": {}
+    },
+    {
+        "label": "x",
+        "kind": 5,
+        "importPath": "data.SemEval2010_task8_all_data.data_util",
+        "description": "data.SemEval2010_task8_all_data.data_util",
+        "peekOfCode": "x = np.asarray(x)\ny = np.asarray(labels)\npos_e1 = np.asarray(pos_e1)\npos_e2 = np.asarray(pos_e2)\nprint x.shape,y.shape,pos_e1.shape,pos_e2.shape\nimport pickle\nwith open('../engdata_test.pkl', 'wb') as outp:\n\tpickle.dump(x, outp)\n\tpickle.dump(y, outp)\n\tpickle.dump(pos_e1, outp)",
+        "detail": "data.SemEval2010_task8_all_data.data_util",
+        "documentation": {}
+    },
+    {
+        "label": "y",
+        "kind": 5,
+        "importPath": "data.SemEval2010_task8_all_data.data_util",
+        "description": "data.SemEval2010_task8_all_data.data_util",
+        "peekOfCode": "y = np.asarray(labels)\npos_e1 = np.asarray(pos_e1)\npos_e2 = np.asarray(pos_e2)\nprint x.shape,y.shape,pos_e1.shape,pos_e2.shape\nimport pickle\nwith open('../engdata_test.pkl', 'wb') as outp:\n\tpickle.dump(x, outp)\n\tpickle.dump(y, outp)\n\tpickle.dump(pos_e1, outp)\n\tpickle.dump(pos_e2, outp)",
+        "detail": "data.SemEval2010_task8_all_data.data_util",
+        "documentation": {}
+    },
+    {
+        "label": "pos_e1",
+        "kind": 5,
+        "importPath": "data.SemEval2010_task8_all_data.data_util",
+        "description": "data.SemEval2010_task8_all_data.data_util",
+        "peekOfCode": "pos_e1 = np.asarray(pos_e1)\npos_e2 = np.asarray(pos_e2)\nprint x.shape,y.shape,pos_e1.shape,pos_e2.shape\nimport pickle\nwith open('../engdata_test.pkl', 'wb') as outp:\n\tpickle.dump(x, outp)\n\tpickle.dump(y, outp)\n\tpickle.dump(pos_e1, outp)\n\tpickle.dump(pos_e2, outp)\nprint '** Finished saving train data.'",
+        "detail": "data.SemEval2010_task8_all_data.data_util",
+        "documentation": {}
+    },
+    {
+        "label": "pos_e2",
+        "kind": 5,
+        "importPath": "data.SemEval2010_task8_all_data.data_util",
+        "description": "data.SemEval2010_task8_all_data.data_util",
+        "peekOfCode": "pos_e2 = np.asarray(pos_e2)\nprint x.shape,y.shape,pos_e1.shape,pos_e2.shape\nimport pickle\nwith open('../engdata_test.pkl', 'wb') as outp:\n\tpickle.dump(x, outp)\n\tpickle.dump(y, outp)\n\tpickle.dump(pos_e1, outp)\n\tpickle.dump(pos_e2, outp)\nprint '** Finished saving train data.'",
+        "detail": "data.SemEval2010_task8_all_data.data_util",
+        "documentation": {}
+    },
+    {
+        "label": "BiLSTM_ATT",
+        "kind": 6,
+        "importPath": "BiLSTM_ATT",
+        "description": "BiLSTM_ATT",
+        "peekOfCode": "class BiLSTM_ATT(nn.Module):\n    def __init__(self,config,embedding_pre):\n        super(BiLSTM_ATT,self).__init__()\n        self.batch = config['BATCH']\n        self.embedding_size = config['EMBEDDING_SIZE']\n        self.embedding_dim = config['EMBEDDING_DIM']\n        self.hidden_dim = config['HIDDEN_DIM']\n        self.tag_size = config['TAG_SIZE']\n        self.pos_size = config['POS_SIZE']\n        self.pos_dim = config['POS_DIM']",
+        "detail": "BiLSTM_ATT",
+        "documentation": {}
+    },
+    {
+        "label": "EMBEDDING_SIZE",
+        "kind": 5,
+        "importPath": "train",
+        "description": "train",
+        "peekOfCode": "EMBEDDING_SIZE = len(word2id)+1        \nEMBEDDING_DIM = 100\nPOS_SIZE = 82  #不同数据集这里可能会报错。\nPOS_DIM = 25\nHIDDEN_DIM = 200\nTAG_SIZE = len(relation2id)\nBATCH = 128\nEPOCHS = 100\nconfig={}\nconfig['EMBEDDING_SIZE'] = EMBEDDING_SIZE",
+        "detail": "train",
+        "documentation": {}
+    },
+    {
+        "label": "EMBEDDING_DIM",
+        "kind": 5,
+        "importPath": "train",
+        "description": "train",
+        "peekOfCode": "EMBEDDING_DIM = 100\nPOS_SIZE = 82  #不同数据集这里可能会报错。\nPOS_DIM = 25\nHIDDEN_DIM = 200\nTAG_SIZE = len(relation2id)\nBATCH = 128\nEPOCHS = 100\nconfig={}\nconfig['EMBEDDING_SIZE'] = EMBEDDING_SIZE\nconfig['EMBEDDING_DIM'] = EMBEDDING_DIM",
+        "detail": "train",
+        "documentation": {}
+    },
+    {
+        "label": "POS_SIZE",
+        "kind": 5,
+        "importPath": "train",
+        "description": "train",
+        "peekOfCode": "POS_SIZE = 82  #不同数据集这里可能会报错。\nPOS_DIM = 25\nHIDDEN_DIM = 200\nTAG_SIZE = len(relation2id)\nBATCH = 128\nEPOCHS = 100\nconfig={}\nconfig['EMBEDDING_SIZE'] = EMBEDDING_SIZE\nconfig['EMBEDDING_DIM'] = EMBEDDING_DIM\nconfig['POS_SIZE'] = POS_SIZE",
+        "detail": "train",
+        "documentation": {}
+    },
+    {
+        "label": "POS_DIM",
+        "kind": 5,
+        "importPath": "train",
+        "description": "train",
+        "peekOfCode": "POS_DIM = 25\nHIDDEN_DIM = 200\nTAG_SIZE = len(relation2id)\nBATCH = 128\nEPOCHS = 100\nconfig={}\nconfig['EMBEDDING_SIZE'] = EMBEDDING_SIZE\nconfig['EMBEDDING_DIM'] = EMBEDDING_DIM\nconfig['POS_SIZE'] = POS_SIZE\nconfig['POS_DIM'] = POS_DIM",
+        "detail": "train",
+        "documentation": {}
+    },
+    {
+        "label": "HIDDEN_DIM",
+        "kind": 5,
+        "importPath": "train",
+        "description": "train",
+        "peekOfCode": "HIDDEN_DIM = 200\nTAG_SIZE = len(relation2id)\nBATCH = 128\nEPOCHS = 100\nconfig={}\nconfig['EMBEDDING_SIZE'] = EMBEDDING_SIZE\nconfig['EMBEDDING_DIM'] = EMBEDDING_DIM\nconfig['POS_SIZE'] = POS_SIZE\nconfig['POS_DIM'] = POS_DIM\nconfig['HIDDEN_DIM'] = HIDDEN_DIM",
+        "detail": "train",
+        "documentation": {}
+    },
+    {
+        "label": "TAG_SIZE",
+        "kind": 5,
+        "importPath": "train",
+        "description": "train",
+        "peekOfCode": "TAG_SIZE = len(relation2id)\nBATCH = 128\nEPOCHS = 100\nconfig={}\nconfig['EMBEDDING_SIZE'] = EMBEDDING_SIZE\nconfig['EMBEDDING_DIM'] = EMBEDDING_DIM\nconfig['POS_SIZE'] = POS_SIZE\nconfig['POS_DIM'] = POS_DIM\nconfig['HIDDEN_DIM'] = HIDDEN_DIM\nconfig['TAG_SIZE'] = TAG_SIZE",
+        "detail": "train",
+        "documentation": {}
+    },
+    {
+        "label": "BATCH",
+        "kind": 5,
+        "importPath": "train",
+        "description": "train",
+        "peekOfCode": "BATCH = 128\nEPOCHS = 100\nconfig={}\nconfig['EMBEDDING_SIZE'] = EMBEDDING_SIZE\nconfig['EMBEDDING_DIM'] = EMBEDDING_DIM\nconfig['POS_SIZE'] = POS_SIZE\nconfig['POS_DIM'] = POS_DIM\nconfig['HIDDEN_DIM'] = HIDDEN_DIM\nconfig['TAG_SIZE'] = TAG_SIZE\nconfig['BATCH'] = BATCH",
+        "detail": "train",
+        "documentation": {}
+    },
+    {
+        "label": "EPOCHS",
+        "kind": 5,
+        "importPath": "train",
+        "description": "train",
+        "peekOfCode": "EPOCHS = 100\nconfig={}\nconfig['EMBEDDING_SIZE'] = EMBEDDING_SIZE\nconfig['EMBEDDING_DIM'] = EMBEDDING_DIM\nconfig['POS_SIZE'] = POS_SIZE\nconfig['POS_DIM'] = POS_DIM\nconfig['HIDDEN_DIM'] = HIDDEN_DIM\nconfig['TAG_SIZE'] = TAG_SIZE\nconfig['BATCH'] = BATCH\nconfig[\"pretrained\"]=False",
+        "detail": "train",
+        "documentation": {}
+    },
+    {
+        "label": "config['EMBEDDING_SIZE']",
+        "kind": 5,
+        "importPath": "train",
+        "description": "train",
+        "peekOfCode": "config['EMBEDDING_SIZE'] = EMBEDDING_SIZE\nconfig['EMBEDDING_DIM'] = EMBEDDING_DIM\nconfig['POS_SIZE'] = POS_SIZE\nconfig['POS_DIM'] = POS_DIM\nconfig['HIDDEN_DIM'] = HIDDEN_DIM\nconfig['TAG_SIZE'] = TAG_SIZE\nconfig['BATCH'] = BATCH\nconfig[\"pretrained\"]=False\nlearning_rate = 0.0005\nembedding_pre = []",
+        "detail": "train",
+        "documentation": {}
+    },
+    {
+        "label": "config['EMBEDDING_DIM']",
+        "kind": 5,
+        "importPath": "train",
+        "description": "train",
+        "peekOfCode": "config['EMBEDDING_DIM'] = EMBEDDING_DIM\nconfig['POS_SIZE'] = POS_SIZE\nconfig['POS_DIM'] = POS_DIM\nconfig['HIDDEN_DIM'] = HIDDEN_DIM\nconfig['TAG_SIZE'] = TAG_SIZE\nconfig['BATCH'] = BATCH\nconfig[\"pretrained\"]=False\nlearning_rate = 0.0005\nembedding_pre = []\nif len(sys.argv)==2 and sys.argv[1]==\"pretrained\":",
+        "detail": "train",
+        "documentation": {}
+    },
+    {
+        "label": "config['POS_SIZE']",
+        "kind": 5,
+        "importPath": "train",
+        "description": "train",
+        "peekOfCode": "config['POS_SIZE'] = POS_SIZE\nconfig['POS_DIM'] = POS_DIM\nconfig['HIDDEN_DIM'] = HIDDEN_DIM\nconfig['TAG_SIZE'] = TAG_SIZE\nconfig['BATCH'] = BATCH\nconfig[\"pretrained\"]=False\nlearning_rate = 0.0005\nembedding_pre = []\nif len(sys.argv)==2 and sys.argv[1]==\"pretrained\":\n    print \"use pretrained embedding\"",
+        "detail": "train",
+        "documentation": {}
+    },
+    {
+        "label": "config['POS_DIM']",
+        "kind": 5,
+        "importPath": "train",
+        "description": "train",
+        "peekOfCode": "config['POS_DIM'] = POS_DIM\nconfig['HIDDEN_DIM'] = HIDDEN_DIM\nconfig['TAG_SIZE'] = TAG_SIZE\nconfig['BATCH'] = BATCH\nconfig[\"pretrained\"]=False\nlearning_rate = 0.0005\nembedding_pre = []\nif len(sys.argv)==2 and sys.argv[1]==\"pretrained\":\n    print \"use pretrained embedding\"\n    config[\"pretrained\"]=True",
+        "detail": "train",
+        "documentation": {}
+    },
+    {
+        "label": "config['HIDDEN_DIM']",
+        "kind": 5,
+        "importPath": "train",
+        "description": "train",
+        "peekOfCode": "config['HIDDEN_DIM'] = HIDDEN_DIM\nconfig['TAG_SIZE'] = TAG_SIZE\nconfig['BATCH'] = BATCH\nconfig[\"pretrained\"]=False\nlearning_rate = 0.0005\nembedding_pre = []\nif len(sys.argv)==2 and sys.argv[1]==\"pretrained\":\n    print \"use pretrained embedding\"\n    config[\"pretrained\"]=True\n    word2vec = {}",
+        "detail": "train",
+        "documentation": {}
+    },
+    {
+        "label": "config['TAG_SIZE']",
+        "kind": 5,
+        "importPath": "train",
+        "description": "train",
+        "peekOfCode": "config['TAG_SIZE'] = TAG_SIZE\nconfig['BATCH'] = BATCH\nconfig[\"pretrained\"]=False\nlearning_rate = 0.0005\nembedding_pre = []\nif len(sys.argv)==2 and sys.argv[1]==\"pretrained\":\n    print \"use pretrained embedding\"\n    config[\"pretrained\"]=True\n    word2vec = {}\n    with codecs.open('vec.txt','r','utf-8') as input_data:   ",
+        "detail": "train",
+        "documentation": {}
+    },
+    {
+        "label": "config['BATCH']",
+        "kind": 5,
+        "importPath": "train",
+        "description": "train",
+        "peekOfCode": "config['BATCH'] = BATCH\nconfig[\"pretrained\"]=False\nlearning_rate = 0.0005\nembedding_pre = []\nif len(sys.argv)==2 and sys.argv[1]==\"pretrained\":\n    print \"use pretrained embedding\"\n    config[\"pretrained\"]=True\n    word2vec = {}\n    with codecs.open('vec.txt','r','utf-8') as input_data:   \n        for line in input_data.readlines():",
+        "detail": "train",
+        "documentation": {}
+    },
+    {
+        "label": "learning_rate",
+        "kind": 5,
+        "importPath": "train",
+        "description": "train",
+        "peekOfCode": "learning_rate = 0.0005\nembedding_pre = []\nif len(sys.argv)==2 and sys.argv[1]==\"pretrained\":\n    print \"use pretrained embedding\"\n    config[\"pretrained\"]=True\n    word2vec = {}\n    with codecs.open('vec.txt','r','utf-8') as input_data:   \n        for line in input_data.readlines():\n            word2vec[line.split()[0]] = map(eval,line.split()[1:])\n    unknow_pre = []",
+        "detail": "train",
+        "documentation": {}
+    },
+    {
+        "label": "embedding_pre",
+        "kind": 5,
+        "importPath": "train",
+        "description": "train",
+        "peekOfCode": "embedding_pre = []\nif len(sys.argv)==2 and sys.argv[1]==\"pretrained\":\n    print \"use pretrained embedding\"\n    config[\"pretrained\"]=True\n    word2vec = {}\n    with codecs.open('vec.txt','r','utf-8') as input_data:   \n        for line in input_data.readlines():\n            word2vec[line.split()[0]] = map(eval,line.split()[1:])\n    unknow_pre = []\n    unknow_pre.extend([1]*100)",
+        "detail": "train",
+        "documentation": {}
+    },
+    {
+        "label": "model",
+        "kind": 5,
+        "importPath": "train",
+        "description": "train",
+        "peekOfCode": "model = BiLSTM_ATT(config,embedding_pre)\n#model = torch.load('model/model_epoch20.pkl')\noptimizer = optim.Adam(model.parameters(), lr=learning_rate, weight_decay=1e-5)\ncriterion = nn.CrossEntropyLoss(size_average=True)\ntrain = torch.LongTensor(train[:len(train)-len(train)%BATCH])\nposition1 = torch.LongTensor(position1[:len(train)-len(train)%BATCH])\nposition2 = torch.LongTensor(position2[:len(train)-len(train)%BATCH])\nlabels = torch.LongTensor(labels[:len(train)-len(train)%BATCH])\ntrain_datasets = D.TensorDataset(train,position1,position2,labels)\ntrain_dataloader = D.DataLoader(train_datasets,BATCH,True,num_workers=2)",
+        "detail": "train",
+        "documentation": {}
+    },
+    {
+        "label": "#model",
+        "kind": 5,
+        "importPath": "train",
+        "description": "train",
+        "peekOfCode": "#model = torch.load('model/model_epoch20.pkl')\noptimizer = optim.Adam(model.parameters(), lr=learning_rate, weight_decay=1e-5)\ncriterion = nn.CrossEntropyLoss(size_average=True)\ntrain = torch.LongTensor(train[:len(train)-len(train)%BATCH])\nposition1 = torch.LongTensor(position1[:len(train)-len(train)%BATCH])\nposition2 = torch.LongTensor(position2[:len(train)-len(train)%BATCH])\nlabels = torch.LongTensor(labels[:len(train)-len(train)%BATCH])\ntrain_datasets = D.TensorDataset(train,position1,position2,labels)\ntrain_dataloader = D.DataLoader(train_datasets,BATCH,True,num_workers=2)\ntest = torch.LongTensor(test[:len(test)-len(test)%BATCH])",
+        "detail": "train",
+        "documentation": {}
+    },
+    {
+        "label": "optimizer",
+        "kind": 5,
+        "importPath": "train",
+        "description": "train",
+        "peekOfCode": "optimizer = optim.Adam(model.parameters(), lr=learning_rate, weight_decay=1e-5)\ncriterion = nn.CrossEntropyLoss(size_average=True)\ntrain = torch.LongTensor(train[:len(train)-len(train)%BATCH])\nposition1 = torch.LongTensor(position1[:len(train)-len(train)%BATCH])\nposition2 = torch.LongTensor(position2[:len(train)-len(train)%BATCH])\nlabels = torch.LongTensor(labels[:len(train)-len(train)%BATCH])\ntrain_datasets = D.TensorDataset(train,position1,position2,labels)\ntrain_dataloader = D.DataLoader(train_datasets,BATCH,True,num_workers=2)\ntest = torch.LongTensor(test[:len(test)-len(test)%BATCH])\nposition1_t = torch.LongTensor(position1_t[:len(test)-len(test)%BATCH])",
+        "detail": "train",
+        "documentation": {}
+    },
+    {
+        "label": "criterion",
+        "kind": 5,
+        "importPath": "train",
+        "description": "train",
+        "peekOfCode": "criterion = nn.CrossEntropyLoss(size_average=True)\ntrain = torch.LongTensor(train[:len(train)-len(train)%BATCH])\nposition1 = torch.LongTensor(position1[:len(train)-len(train)%BATCH])\nposition2 = torch.LongTensor(position2[:len(train)-len(train)%BATCH])\nlabels = torch.LongTensor(labels[:len(train)-len(train)%BATCH])\ntrain_datasets = D.TensorDataset(train,position1,position2,labels)\ntrain_dataloader = D.DataLoader(train_datasets,BATCH,True,num_workers=2)\ntest = torch.LongTensor(test[:len(test)-len(test)%BATCH])\nposition1_t = torch.LongTensor(position1_t[:len(test)-len(test)%BATCH])\nposition2_t = torch.LongTensor(position2_t[:len(test)-len(test)%BATCH])",
+        "detail": "train",
+        "documentation": {}
+    },
+    {
+        "label": "train",
+        "kind": 5,
+        "importPath": "train",
+        "description": "train",
+        "peekOfCode": "train = torch.LongTensor(train[:len(train)-len(train)%BATCH])\nposition1 = torch.LongTensor(position1[:len(train)-len(train)%BATCH])\nposition2 = torch.LongTensor(position2[:len(train)-len(train)%BATCH])\nlabels = torch.LongTensor(labels[:len(train)-len(train)%BATCH])\ntrain_datasets = D.TensorDataset(train,position1,position2,labels)\ntrain_dataloader = D.DataLoader(train_datasets,BATCH,True,num_workers=2)\ntest = torch.LongTensor(test[:len(test)-len(test)%BATCH])\nposition1_t = torch.LongTensor(position1_t[:len(test)-len(test)%BATCH])\nposition2_t = torch.LongTensor(position2_t[:len(test)-len(test)%BATCH])\nlabels_t = torch.LongTensor(labels_t[:len(test)-len(test)%BATCH])",
+        "detail": "train",
+        "documentation": {}
+    },
+    {
+        "label": "position1",
+        "kind": 5,
+        "importPath": "train",
+        "description": "train",
+        "peekOfCode": "position1 = torch.LongTensor(position1[:len(train)-len(train)%BATCH])\nposition2 = torch.LongTensor(position2[:len(train)-len(train)%BATCH])\nlabels = torch.LongTensor(labels[:len(train)-len(train)%BATCH])\ntrain_datasets = D.TensorDataset(train,position1,position2,labels)\ntrain_dataloader = D.DataLoader(train_datasets,BATCH,True,num_workers=2)\ntest = torch.LongTensor(test[:len(test)-len(test)%BATCH])\nposition1_t = torch.LongTensor(position1_t[:len(test)-len(test)%BATCH])\nposition2_t = torch.LongTensor(position2_t[:len(test)-len(test)%BATCH])\nlabels_t = torch.LongTensor(labels_t[:len(test)-len(test)%BATCH])\ntest_datasets = D.TensorDataset(test,position1_t,position2_t,labels_t)",
+        "detail": "train",
+        "documentation": {}
+    },
+    {
+        "label": "position2",
+        "kind": 5,
+        "importPath": "train",
+        "description": "train",
+        "peekOfCode": "position2 = torch.LongTensor(position2[:len(train)-len(train)%BATCH])\nlabels = torch.LongTensor(labels[:len(train)-len(train)%BATCH])\ntrain_datasets = D.TensorDataset(train,position1,position2,labels)\ntrain_dataloader = D.DataLoader(train_datasets,BATCH,True,num_workers=2)\ntest = torch.LongTensor(test[:len(test)-len(test)%BATCH])\nposition1_t = torch.LongTensor(position1_t[:len(test)-len(test)%BATCH])\nposition2_t = torch.LongTensor(position2_t[:len(test)-len(test)%BATCH])\nlabels_t = torch.LongTensor(labels_t[:len(test)-len(test)%BATCH])\ntest_datasets = D.TensorDataset(test,position1_t,position2_t,labels_t)\ntest_dataloader = D.DataLoader(test_datasets,BATCH,True,num_workers=2)",
+        "detail": "train",
+        "documentation": {}
+    },
+    {
+        "label": "labels",
+        "kind": 5,
+        "importPath": "train",
+        "description": "train",
+        "peekOfCode": "labels = torch.LongTensor(labels[:len(train)-len(train)%BATCH])\ntrain_datasets = D.TensorDataset(train,position1,position2,labels)\ntrain_dataloader = D.DataLoader(train_datasets,BATCH,True,num_workers=2)\ntest = torch.LongTensor(test[:len(test)-len(test)%BATCH])\nposition1_t = torch.LongTensor(position1_t[:len(test)-len(test)%BATCH])\nposition2_t = torch.LongTensor(position2_t[:len(test)-len(test)%BATCH])\nlabels_t = torch.LongTensor(labels_t[:len(test)-len(test)%BATCH])\ntest_datasets = D.TensorDataset(test,position1_t,position2_t,labels_t)\ntest_dataloader = D.DataLoader(test_datasets,BATCH,True,num_workers=2)\nfor epoch in range(EPOCHS):",
+        "detail": "train",
+        "documentation": {}
+    },
+    {
+        "label": "train_datasets",
+        "kind": 5,
+        "importPath": "train",
+        "description": "train",
+        "peekOfCode": "train_datasets = D.TensorDataset(train,position1,position2,labels)\ntrain_dataloader = D.DataLoader(train_datasets,BATCH,True,num_workers=2)\ntest = torch.LongTensor(test[:len(test)-len(test)%BATCH])\nposition1_t = torch.LongTensor(position1_t[:len(test)-len(test)%BATCH])\nposition2_t = torch.LongTensor(position2_t[:len(test)-len(test)%BATCH])\nlabels_t = torch.LongTensor(labels_t[:len(test)-len(test)%BATCH])\ntest_datasets = D.TensorDataset(test,position1_t,position2_t,labels_t)\ntest_dataloader = D.DataLoader(test_datasets,BATCH,True,num_workers=2)\nfor epoch in range(EPOCHS):\n    print \"epoch:\",epoch",
+        "detail": "train",
+        "documentation": {}
+    },
+    {
+        "label": "train_dataloader",
+        "kind": 5,
+        "importPath": "train",
+        "description": "train",
+        "peekOfCode": "train_dataloader = D.DataLoader(train_datasets,BATCH,True,num_workers=2)\ntest = torch.LongTensor(test[:len(test)-len(test)%BATCH])\nposition1_t = torch.LongTensor(position1_t[:len(test)-len(test)%BATCH])\nposition2_t = torch.LongTensor(position2_t[:len(test)-len(test)%BATCH])\nlabels_t = torch.LongTensor(labels_t[:len(test)-len(test)%BATCH])\ntest_datasets = D.TensorDataset(test,position1_t,position2_t,labels_t)\ntest_dataloader = D.DataLoader(test_datasets,BATCH,True,num_workers=2)\nfor epoch in range(EPOCHS):\n    print \"epoch:\",epoch\n    acc=0",
+        "detail": "train",
+        "documentation": {}
+    },
+    {
+        "label": "test",
+        "kind": 5,
+        "importPath": "train",
+        "description": "train",
+        "peekOfCode": "test = torch.LongTensor(test[:len(test)-len(test)%BATCH])\nposition1_t = torch.LongTensor(position1_t[:len(test)-len(test)%BATCH])\nposition2_t = torch.LongTensor(position2_t[:len(test)-len(test)%BATCH])\nlabels_t = torch.LongTensor(labels_t[:len(test)-len(test)%BATCH])\ntest_datasets = D.TensorDataset(test,position1_t,position2_t,labels_t)\ntest_dataloader = D.DataLoader(test_datasets,BATCH,True,num_workers=2)\nfor epoch in range(EPOCHS):\n    print \"epoch:\",epoch\n    acc=0\n    total=0",
+        "detail": "train",
+        "documentation": {}
+    },
+    {
+        "label": "position1_t",
+        "kind": 5,
+        "importPath": "train",
+        "description": "train",
+        "peekOfCode": "position1_t = torch.LongTensor(position1_t[:len(test)-len(test)%BATCH])\nposition2_t = torch.LongTensor(position2_t[:len(test)-len(test)%BATCH])\nlabels_t = torch.LongTensor(labels_t[:len(test)-len(test)%BATCH])\ntest_datasets = D.TensorDataset(test,position1_t,position2_t,labels_t)\ntest_dataloader = D.DataLoader(test_datasets,BATCH,True,num_workers=2)\nfor epoch in range(EPOCHS):\n    print \"epoch:\",epoch\n    acc=0\n    total=0\n    for sentence,pos1,pos2,tag in train_dataloader:",
+        "detail": "train",
+        "documentation": {}
+    },
+    {
+        "label": "position2_t",
+        "kind": 5,
+        "importPath": "train",
+        "description": "train",
+        "peekOfCode": "position2_t = torch.LongTensor(position2_t[:len(test)-len(test)%BATCH])\nlabels_t = torch.LongTensor(labels_t[:len(test)-len(test)%BATCH])\ntest_datasets = D.TensorDataset(test,position1_t,position2_t,labels_t)\ntest_dataloader = D.DataLoader(test_datasets,BATCH,True,num_workers=2)\nfor epoch in range(EPOCHS):\n    print \"epoch:\",epoch\n    acc=0\n    total=0\n    for sentence,pos1,pos2,tag in train_dataloader:\n        sentence = Variable(sentence)",
+        "detail": "train",
+        "documentation": {}
+    },
+    {
+        "label": "labels_t",
+        "kind": 5,
+        "importPath": "train",
+        "description": "train",
+        "peekOfCode": "labels_t = torch.LongTensor(labels_t[:len(test)-len(test)%BATCH])\ntest_datasets = D.TensorDataset(test,position1_t,position2_t,labels_t)\ntest_dataloader = D.DataLoader(test_datasets,BATCH,True,num_workers=2)\nfor epoch in range(EPOCHS):\n    print \"epoch:\",epoch\n    acc=0\n    total=0\n    for sentence,pos1,pos2,tag in train_dataloader:\n        sentence = Variable(sentence)\n        pos1 = Variable(pos1)",
+        "detail": "train",
+        "documentation": {}
+    },
+    {
+        "label": "test_datasets",
+        "kind": 5,
+        "importPath": "train",
+        "description": "train",
+        "peekOfCode": "test_datasets = D.TensorDataset(test,position1_t,position2_t,labels_t)\ntest_dataloader = D.DataLoader(test_datasets,BATCH,True,num_workers=2)\nfor epoch in range(EPOCHS):\n    print \"epoch:\",epoch\n    acc=0\n    total=0\n    for sentence,pos1,pos2,tag in train_dataloader:\n        sentence = Variable(sentence)\n        pos1 = Variable(pos1)\n        pos2 = Variable(pos2)",
+        "detail": "train",
+        "documentation": {}
+    },
+    {
+        "label": "test_dataloader",
+        "kind": 5,
+        "importPath": "train",
+        "description": "train",
+        "peekOfCode": "test_dataloader = D.DataLoader(test_datasets,BATCH,True,num_workers=2)\nfor epoch in range(EPOCHS):\n    print \"epoch:\",epoch\n    acc=0\n    total=0\n    for sentence,pos1,pos2,tag in train_dataloader:\n        sentence = Variable(sentence)\n        pos1 = Variable(pos1)\n        pos2 = Variable(pos2)\n        y = model(sentence,pos1,pos2)  ",
+        "detail": "train",
+        "documentation": {}
+    }
+]
