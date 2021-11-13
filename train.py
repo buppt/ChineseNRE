@@ -102,7 +102,7 @@ if len(sys.argv) == 3 and sys.argv[2] == "pretrained":
     print(embedding_pre.shape)
 
 model = BiLSTM_ATT(config, embedding_pre)
-#model = torch.load('model/model_epoch20.pkl')
+# model = torch.load('model/model_01.pkl')
 optimizer = optim.Adam(model.parameters(), lr=learning_rate, weight_decay=1e-5)
 criterion = nn.CrossEntropyLoss(reduction='mean')
 
