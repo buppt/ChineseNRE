@@ -91,12 +91,13 @@ if len(sys.argv) == 3 and sys.argv[2] == "pretrained":
     unknow_pre = []
     unknow_pre.extend([1] * 100)
     embedding_pre.append(unknow_pre)  #wordvec id 0
-    for word in word2id:
+    ad = 0
+    for word, idx in word2id.items():
         if word in word2vec:
-            embedding_pre.append(word2vec[word])
+            ad += 1
+            embedding_pre.append(list(word2vec[word]))
         else:
             embedding_pre.append(unknow_pre)
-
     embedding_pre = np.asarray(embedding_pre)
     print(embedding_pre.shape)
 
