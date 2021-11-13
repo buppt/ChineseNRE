@@ -1,3 +1,5 @@
 .vscode/*
 __pycache__/*
 model/*
+f1.jpg
+glove.6B.100d.txt

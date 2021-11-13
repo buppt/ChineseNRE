@@ -11,10 +11,10 @@ import torch.utils.data as D
 from torch.autograd import Variable
 from BiLSTM_ATT import BiLSTM_ATT
 
-if len(sys.argv) == 2 and sys.argv[1] == "eng":
+if len(sys.argv) >= 2 and sys.argv[1] == "eng":
     fname_train = './data/engdata_train.pkl'
     fname_test = './data/engdata_test.pkl'
-if len(sys.argv) == 2 and sys.argv[1] == "chn":
+if len(sys.argv) >= 2 and sys.argv[1] == "chn":
     fname_train = './data/people_relation_train.pkl'
     fname_test = './data/people_relation_test.pkl'
 
@@ -44,13 +44,13 @@ print("word2id len", len(word2id))
 EMBEDDING_SIZE = len(word2id) + 1
 EMBEDDING_DIM = 100
 
-if len(sys.argv) == 2 and sys.argv[1] == "chn":
+if len(sys.argv) >= 2 and sys.argv[1] == "chn":
     POS_SIZE = 82  #不同数据集这里可能会报错。 中文数据集用这个
 
 # 4409 100
 # 128 50
 
-if len(sys.argv) == 2 and sys.argv[1] == "eng":
+if len(sys.argv) >= 2 and sys.argv[1] == "eng":
     POS_SIZE = 140  #不同数据集这里可能会报错。  英文数据集用这个
 POS_DIM = 25
 # 21793 100
@@ -80,7 +80,11 @@ if len(sys.argv) == 3 and sys.argv[2] == "pretrained":
     print("use pretrained embedding")
     config["pretrained"] = True
     word2vec = {}
-    with codecs.open('vec.txt', 'r', 'utf-8') as input_data:
+    if sys.argv[1] == "eng":
+        pre_path = 'glove.6B.100d.txt'
+    else:
+        pre_path = 'vec.txt'
+    with codecs.open(pre_path, 'r', 'utf-8') as input_data:
         for line in input_data.readlines():
             word2vec[line.split()[0]] = map(eval, line.split()[1:])
 

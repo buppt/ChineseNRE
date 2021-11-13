@@ -66,12 +66,6 @@ class BiLSTM_ATT(nn.Module):
     def forward(self, sentence, pos1, pos2):
 
         self.hidden = self.init_hidden_lstm()
-        # print(sentence.shape, pos1.shape, pos2.shape)
-        # print(self.pos_size, self.pos_dim)
-        # print(self.embedding_size, self.embedding_dim)
-        # print(pos1.min(), pos1.max())
-        # print(pos2.min(), pos2.max())
-        # print(sentence.min(), sentence.max())
         self.word_embeds(sentence)
         self.pos1_embeds(pos1)
         self.pos2_embeds(pos2)
